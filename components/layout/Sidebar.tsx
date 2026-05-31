@@ -33,7 +33,7 @@ const menuItems = [
   {
     name: "Email Accounts",
     icon: Mail,
-    path: "/accounts",
+    path: "/email-accounts",
   },
   {
     name: "Email Campaign",

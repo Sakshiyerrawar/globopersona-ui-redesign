@@ -1,12 +1,118 @@
 @import "tailwindcss";
 
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
 :root {
-  --background: #f5f7fb;
+  --background: #f8fafc;
   --foreground: #111827;
 }
 
+.dark {
+  --background: #020817;
+  --foreground: #f8fafc;
+}
+
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =======================================================
+   GLOBAL DARK MODE MAPPINGS (Preserves Component Design)
+   ======================================================= */
+
+/* BACKGROUNDS */
+/* Page / App Backgrounds */
+.dark .bg-\[\#f8fafc\], 
+.dark .bg-\[\#f8f9fb\], 
+.dark .bg-\[\#f5f6f8\] { 
+  background-color: #020817 !important; 
+}
+
+/* Base Card / Container Backgrounds */
+.dark .bg-white, 
+.dark .bg-\[\#ffffff\],
+.dark .bg-gray-50 { 
+  background-color: #0f172a !important; 
+}
+
+/* Pastel Card Variations (Tinted Dark Mode Equivalents) */
+.dark .bg-\[\#eef4ff\], .dark .bg-blue-50 { background-color: #1e3a8a !important; } /* Blue */
+.dark .bg-\[\#f8efff\], .dark .bg-purple-50 { background-color: #4c1d95 !important; } /* Purple */
+.dark .bg-\[\#eefcf5\], .dark .bg-green-50 { background-color: #064e3b !important; } /* Green */
+.dark .bg-\[\#fff9eb\], .dark .bg-yellow-50 { background-color: #78350f !important; } /* Yellow */
+.dark .bg-\[\#fff5f5\], .dark .bg-red-50 { background-color: #7f1d1d !important; } /* Red */
+.dark .bg-\[\#f3f4f6\], .dark .bg-gray-100 { background-color: #1e293b !important; } /* Gray */
+.dark .bg-\[\#fff7ed\], .dark .bg-orange-50 { background-color: #7c2d12 !important; } /* Orange */
+.dark .bg-\[\#eef7ff\], .dark .bg-sky-50 { background-color: #0c4a6e !important; } /* Sky */
+.dark .bg-\[\#faf5ff\], .dark .bg-fuchsia-50 { background-color: #701a75 !important; } /* Fuchsia */
+.dark .bg-amber-100 { background-color: #92400e !important; } /* Amber badge */
+.dark .bg-red-100 { background-color: #991b1b !important; } /* Red badge */
+.dark .bg-green-100 { background-color: #166534 !important; } /* Green badge */
+.dark .bg-blue-100 { background-color: #1e40af !important; } /* Blue badge */
+
+/* TEXT COLORS */
+/* Primary Text */
+.dark .text-\[\#111827\], 
+.dark .text-\[\#0f172a\], 
+.dark .text-\[\#1e293b\],
+.dark .text-gray-900,
+.dark .text-gray-800 { 
+  color: #f8fafc !important; 
+}
+
+/* Secondary Text */
+.dark .text-\[\#374151\], 
+.dark .text-\[\#334155\],
+.dark .text-gray-700 { 
+  color: #e2e8f0 !important; 
+}
+
+/* Muted / Tertiary Text */
+.dark .text-\[\#6b7280\], 
+.dark .text-\[\#64748b\], 
+.dark .text-\[\#9ca3af\],
+.dark .text-gray-600,
+.dark .text-gray-500,
+.dark .text-gray-400 { 
+  color: #94a3b8 !important; 
+}
+
+/* Badge Text Mappings (Lighter contrast on dark badges) */
+.dark .text-amber-700 { color: #fcd34d !important; }
+.dark .text-red-700 { color: #fca5a5 !important; }
+.dark .text-green-700 { color: #86efac !important; }
+.dark .text-blue-700, .dark .text-blue-600 { color: #93c5fd !important; }
+
+/* BORDER COLORS */
+.dark .border-\[\#e5e7eb\], 
+.dark .border-\[\#e2e8f0\], 
+.dark .border-\[\#cbd5e1\], 
+.dark .border-\[\#d1d5db\],
+.dark .border-\[\#dbe3ea\],
+.dark .border-\[\#eef2f7\],
+.dark .border-gray-200,
+.dark .border-gray-300,
+.dark .border-gray-100 { 
+  border-color: #1e293b !important; 
+}
+
+/* DIVIDE COLORS (For tables) */
+.dark .divide-gray-100 > :not([hidden]) ~ :not([hidden]),
+.dark .divide-gray-200 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #1e293b !important;
+}
+
+/* INPUT BACKGROUNDS */
+.dark input, .dark select, .dark textarea {
+  background-color: #0f172a !important;
+  border-color: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+.dark input::placeholder, .dark textarea::placeholder {
+  color: #64748b !important;
 }

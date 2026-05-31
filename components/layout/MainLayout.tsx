@@ -13,11 +13,11 @@ export default function MainLayout({
 
       <Sidebar />
 
-      <div className="flex-1 ml-[260px] min-h-screen">
+      <div className="flex-1 ml-[270px] min-h-screen flex flex-col">
 
         <Topbar />
 
-        <main className="p-6">
+        <main className="flex-1 flex flex-col">
           {children}
         </main>
 

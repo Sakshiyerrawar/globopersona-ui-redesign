@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 import {
   Bell,
@@ -16,11 +16,13 @@ import {
   LogOut,
   X,
 } from "lucide-react";
+import { useTheme } from "@/components/shared/ThemeProvider";
 
 export default function Topbar() {
   const router = useRouter();
 
-  const [darkMode, setDarkMode] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+  const darkMode = theme === "dark";
 
   const [showNotifications, setShowNotifications] =
     useState(false);
@@ -68,23 +70,7 @@ export default function Topbar() {
 
   }, []);
 
-  /* DARK MODE */
-  useEffect(() => {
-
-    if (darkMode) {
-
-      document.body.classList.add(
-        "bg-[#020817]"
-      );
-
-    } else {
-
-      document.body.classList.remove(
-        "bg-[#020817]"
-      );
-    }
-
-  }, [darkMode]);
+  /* DARK MODE LOGIC MOVED TO THEME PROVIDER */
 
   /* LOGOUT SCREEN */
   if (loggedOut) {
@@ -215,25 +201,24 @@ export default function Topbar() {
   }
 
   /* NORMAL TOPBAR */
+  const pathname = usePathname();
+  const isCampaignRoute = pathname?.startsWith("/campaigns");
+  
+  const title = isCampaignRoute ? "Email Campaigns" : "Welcome back, Sakshi! 👋";
+  const subtitle = isCampaignRoute 
+    ? "Create, schedule and track your email campaigns" 
+    : "Here's what's happening with your campaigns today";
+
   return (
-
     <header className="sticky top-0 z-40 flex h-[78px] items-center justify-between border-b border-[#e5e7eb] bg-white px-8">
-
       {/* LEFT */}
       <div>
-
         <h1 className="text-[20px] font-bold text-[#111827]">
-
-          Welcome back, Sakshi! 👋
-
+          {title}
         </h1>
-
         <p className="mt-1 text-[15px] text-[#6b7280]">
-
-          Here's what's happening with your campaigns today
-
+          {subtitle}
         </p>
-
       </div>
 
       {/* RIGHT */}
@@ -244,9 +229,7 @@ export default function Topbar() {
 
         {/* THEME */}
         <button
-          onClick={() =>
-            setDarkMode(!darkMode)
-          }
+          onClick={toggleTheme}
           className={`flex h-[42px] w-[84px] items-center rounded-full px-[5px] transition-all ${
             darkMode
               ? "justify-end bg-[#334155]"
