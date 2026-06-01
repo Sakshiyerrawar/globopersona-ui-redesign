@@ -1,4 +1,9 @@
-export type CampaignStatus = "Draft" | "Scheduled" | "Running" | "Paused" | "Completed";
+export type CampaignStatus =
+  | "Draft"
+  | "Scheduled"
+  | "Running"
+  | "Paused"
+  | "Completed";
 
 export interface Campaign {
   id: string;
@@ -7,6 +12,7 @@ export interface Campaign {
   emailAccountId: string;
   emailListId: string;
   status: CampaignStatus;
+  type?: "AI" | "Manual";
   createdAt: string;
   scheduledAt?: string;
   openRate: number;
