@@ -28,6 +28,7 @@ export interface Contact {
   lastName: string;
   email: string;
   company: string;
+  status?: "Valid" | "Unsubscribed";
 }
 
 export interface EmailList {
@@ -39,13 +40,18 @@ export interface EmailList {
   avgQuality: number;
 }
 
-export type AccountStatus = "Connected" | "Disconnected" | "Verifying";
+export type AccountStatus =
+  | "Connected"
+  | "Disconnected"
+  | "Verifying"
+  | "Failed";
 
 export interface EmailAccount {
   id: string;
   email: string;
   provider: string;
   status: AccountStatus;
+  connectedAt?: string;
   dailyLimit: number;
   sentToday: number;
   warmupEnabled: boolean;
